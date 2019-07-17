@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
+import styled from 'styled-components';
 
 const HeroListItem = ({ hero, onClickItem }) => <li onClick={ () => onClickItem(hero) }>{hero.name}</li>;
 
@@ -9,8 +10,14 @@ HeroListItem.propTypes = {
   onClickItem: PropTypes.func,
 };
 
+const Wrapper = styled.div`
+  width: 30vw;
+  height: 80vh;
+  overflow-y: auto;
+`;
+
 const HeroList = ({ heroes, onClickItem }) => (
-  <div id="HeroList">
+  <Wrapper id="HeroList">
     {heroes && heroes.length ? (
       <ul>
         {heroes.map((hero) => <HeroListItem key={`HeroListItem_${hero.id}`} hero={hero} onClickItem={onClickItem}/>)}
@@ -22,7 +29,7 @@ const HeroList = ({ heroes, onClickItem }) => (
         <p>--- {JSON.stringify(heroes)} ---</p>
       </div>
     )}
-  </div>
+  </Wrapper>
 );
 
 HeroList.propTypes = {

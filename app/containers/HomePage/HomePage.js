@@ -12,8 +12,19 @@ import './style.scss';
 import HeroDetail from 'components/HeroDetail';
 import HeroList from 'components/HeroList';
 import HeroListMock from 'components/HeroList/mock';
+import styled from 'styled-components';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+const Wrapper = styled.div`
+  display: inline-flex;
+`;
+const HeroListWrapper = styled.div`
+  float: left;
+`;
+const HeroDetailWrapper = styled.div`
+  float: right;
+`;
+
+export default class HomePage extends React.PureComponent {
   constructor(props) {
     super(props);
     this.selectHero = this.selectHero.bind(this);
@@ -51,24 +62,29 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     const { selectedHero } = this.state;
 
     return (
-      <div>
-        <HeroList heroes={HeroListMock.Brastlewark} onClickItem={this.selectHero} />
+      <Wrapper>
+        <HeroListWrapper>
+          <HeroList heroes={HeroListMock.Brastlewark} onClickItem={this.selectHero} />
+        </HeroListWrapper>
+        
         {selectedHero
           && (
-            <HeroDetail
-              id={selectedHero.id}
-              name={selectedHero.name}
-              thumbnail={selectedHero.thumbnail}
-              age={selectedHero.age}
-              weight={selectedHero.weight}
-              height={selectedHero.height}
-              hairColor={selectedHero.hair_color}
-              professions={selectedHero.professions}
-              friends={selectedHero.friends}
-            />
+            <HeroDetailWrapper>
+              <HeroDetail
+                id={selectedHero.id}
+                name={selectedHero.name}
+                thumbnail={selectedHero.thumbnail}
+                age={selectedHero.age}
+                weight={selectedHero.weight}
+                height={selectedHero.height}
+                hairColor={selectedHero.hair_color}
+                professions={selectedHero.professions}
+                friends={selectedHero.friends}
+              />
+            </HeroDetailWrapper>
           )
         }
-      </div>
+      </Wrapper>
     );
   }
 }

@@ -29,6 +29,12 @@ DetailList.propTypes = {
   values: PropTypes.arrayOf(PropTypes.string),
 };
 
+const Wrapper = styled.div`
+  width: 30vw;
+  height: 80vh;
+  overflow-y: auto;
+`;
+
 const Image = styled.img`
   max-width: 300px;
   max-height: 300px;
@@ -38,7 +44,7 @@ const Image = styled.img`
 const HeroDetail = ({
   id, name, thumbnail, age, weight, height, hairColor, professions, friends
 }) => (
-  <div>
+  <Wrapper>
     {(id || id === 0) && name && age && weight && height && hairColor ? (
       <div id={`heroDetail_${id}`}>
         <Image src={thumbnail} alt={`${name}'s thumbnail`} />
@@ -65,7 +71,7 @@ const HeroDetail = ({
         <p>friends: {friends}</p>
       </div>
     )}
-  </div>
+  </Wrapper>
 
 );
 

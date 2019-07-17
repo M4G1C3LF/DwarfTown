@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import './style.scss';
 
 const DetailItem = ({ label, value }) => (
@@ -28,13 +29,18 @@ DetailList.propTypes = {
   values: PropTypes.arrayOf(PropTypes.string),
 };
 
+const Image = styled.img`
+  max-width: 300px;
+  max-height: 300px;
+`;
+
 const HeroDetail = ({
   id, name, thumbnail, age, weight, height, hairColor, professions, friends
 }) => (
   <div>
     {(id || id === 0) && name && age && weight && height && hairColor ? (
       <div id={`heroDetail_${id}`}>
-        <img src={thumbnail} alt={`${name}'s thumbnail`} />
+        <Image src={thumbnail} alt={`${name}'s thumbnail`} />
         <DetailItem label="Name" value={name} />
         <DetailItem label="Age" value={age.toString()} />
         <DetailItem label="Weight" value={weight.toFixed(2).toString()} />

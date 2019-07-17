@@ -30,16 +30,25 @@ DetailList.propTypes = {
 const HeroDetail = ({
   id, name, thumbnail, age, weight, height, hairColor, professions, friends
 }) => (
-  <div id={`heroDetail_${id}`}>
-    <img src={thumbnail} alt={`${name}'s thumbnail`} />
-    <DetailItem label="Name" value={name} />
-    <DetailItem label="Age" value={age.toString()} />
-    <DetailItem label="Weight" value={weight.toString()} />
-    <DetailItem label="Height" value={height.toString()} />
-    <DetailItem label="Hair Color" value={hairColor} />
-    {professions && professions.length && <DetailList label="Professions" values={professions} />}
-    {friends && friends.length && <DetailList label="Friends" values={friends} />}
+  <div>
+    {(id || id === 0) && name && age && weight && height && hairColor ? (
+      <div id={`heroDetail_${id}`}>
+        <img src={thumbnail} alt={`${name}'s thumbnail`} />
+        <DetailItem label="Name" value={name} />
+        <DetailItem label="Age" value={age.toString()} />
+        <DetailItem label="Weight" value={weight.toFixed(2).toString()} />
+        <DetailItem label="Height" value={height.toFixed(2).toString()} />
+        <DetailItem label="Hair Color" value={hairColor} />
+        {professions && professions.length && <DetailList label="Professions" values={professions} />}
+        {friends && friends.length && <DetailList label="Friends" values={friends} />}
+      </div>
+    ) : (
+      <div>
+        <p>Error loading hero detail</p>
+      </div>
+    )}
   </div>
+
 );
 
 HeroDetail.propTypes = {

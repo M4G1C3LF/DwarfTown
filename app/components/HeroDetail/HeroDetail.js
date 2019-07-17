@@ -17,6 +17,7 @@ const DetailList = ({ label, values }) => (
   <div>
     <h4>{label} </h4>
     <ul>
+      {/* eslint-disable react/no-array-index-key */}
       {values.map((value, index) => <li key={`${label}_${index}`}>{value}</li>)}
     </ul>
   </div>

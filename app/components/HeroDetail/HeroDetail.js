@@ -17,10 +17,14 @@ DetailItem.propTypes = {
 const DetailList = ({ label, values }) => (
   <div>
     <h4>{label} </h4>
-    <ul>
-      {/* eslint-disable react/no-array-index-key */}
-      {values.map((value, index) => <li key={`${label}_${index}`}>{value}</li>)}
-    </ul>
+    {values.length ? (
+      <ul>
+        {/* eslint-disable react/no-array-index-key */}
+        {values.map((value, index) => <li key={`${label}_${index}`}>{value}</li>)}
+      </ul>
+    ) : (
+      <p>Empty List</p>
+    )}
   </div>
 );
 
@@ -53,8 +57,8 @@ const HeroDetail = ({
         <DetailItem label="Weight" value={weight.toFixed(2).toString()} />
         <DetailItem label="Height" value={height.toFixed(2).toString()} />
         <DetailItem label="Hair Color" value={hairColor} />
-        {professions && professions.length && <DetailList label="Professions" values={professions} />}
-        {friends && friends.length && <DetailList label="Friends" values={friends} />}
+        {professions && <DetailList label="Professions" values={professions} />}
+        {friends && <DetailList label="Friends" values={friends} />}
       </div>
     ) : (
       <div>

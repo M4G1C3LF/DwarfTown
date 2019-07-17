@@ -32,6 +32,7 @@ DetailList.propTypes = {
 const Image = styled.img`
   max-width: 300px;
   max-height: 300px;
+  border: '5px solid red';
 `;
 
 const HeroDetail = ({
@@ -52,6 +53,16 @@ const HeroDetail = ({
     ) : (
       <div>
         <p>Error loading hero detail</p>
+        <h4>Props</h4>
+        <p>id: {id}</p>
+        <p>name: {name}</p>
+        <p>thumbnail: {thumbnail}</p>
+        <p>iaged: {age}</p>
+        <p>weight: {weight}</p>
+        <p>height: {height}</p>
+        <p>hairColor: {hairColor}</p>
+        <p>professions: {professions}</p>
+        <p>friends: {friends}</p>
       </div>
     )}
   </div>

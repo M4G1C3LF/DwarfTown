@@ -39,9 +39,11 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 400px;
+  max-height: 400px;
   border: '5px solid red';
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const HeroDetail = ({

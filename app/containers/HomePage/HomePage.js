@@ -48,6 +48,7 @@ export default class HomePage extends React.PureComponent {
 
   selectHero(hero) {
     this.setState({ selectedHero: hero });
+    document.getElementById("heroDetailWrapper").scrollIntoView();
   }
 
   render() {
@@ -67,10 +68,9 @@ export default class HomePage extends React.PureComponent {
         <Grid item xs={12} sm={6}>
           <HeroList heroes={HeroListMock.Brastlewark} onClickItem={this.selectHero} />
         </Grid>
-        
-        {selectedHero
-          && (
-            <Grid item xs={12} sm={6}>
+        <Grid id='heroDetailWrapper' item xs={12} sm={6}>
+          {selectedHero
+            && (
               <HeroDetail
                 id={selectedHero.id}
                 name={selectedHero.name}
@@ -82,9 +82,10 @@ export default class HomePage extends React.PureComponent {
                 professions={selectedHero.professions}
                 friends={selectedHero.friends}
               />
-            </Grid>
-          )
-        }
+              
+            )
+          }
+        </Grid>
       </Grid>
     );
   }

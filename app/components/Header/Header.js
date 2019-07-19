@@ -7,7 +7,6 @@ import Banner from './images/banner.jpg';
 const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
-  height: 10vh;
 `;
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function

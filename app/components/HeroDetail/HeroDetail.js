@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import DragScroll from 'react-dragscroll';
-
 import './style.scss';
 
 const DetailItem = ({ label, value }) => (
@@ -36,8 +35,6 @@ DetailList.propTypes = {
 };
 
 const Wrapper = styled.div`
-  width: 30vw;
-  height: 80vh;
   overflow-y: auto;
 `;
 
@@ -50,7 +47,7 @@ const Image = styled.img`
 const HeroDetail = ({
   id, name, thumbnail, age, weight, height, hairColor, professions, friends
 }) => (
-  <DragScroll height={"80vh"} width={"30vw"}>
+  <DragScroll height={"80vh"} width={"100%"}>
     <Wrapper>
       {(id || id === 0) && name && age && weight && height && hairColor ? (
         <div id={`heroDetail_${id}`}>

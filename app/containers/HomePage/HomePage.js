@@ -13,6 +13,7 @@ import HeroDetail from 'components/HeroDetail';
 import HeroList from 'components/HeroList';
 import HeroListMock from 'components/HeroList/mock';
 import styled from 'styled-components';
+import Grid from '@material-ui/core/Grid';
 
 const Wrapper = styled.div`
   display: inline-flex;
@@ -62,14 +63,14 @@ export default class HomePage extends React.PureComponent {
     const { selectedHero } = this.state;
 
     return (
-      <Wrapper>
-        <HeroListWrapper>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
           <HeroList heroes={HeroListMock.Brastlewark} onClickItem={this.selectHero} />
-        </HeroListWrapper>
+        </Grid>
         
         {selectedHero
           && (
-            <HeroDetailWrapper>
+            <Grid item xs={12} sm={6}>
               <HeroDetail
                 id={selectedHero.id}
                 name={selectedHero.name}
@@ -81,10 +82,10 @@ export default class HomePage extends React.PureComponent {
                 professions={selectedHero.professions}
                 friends={selectedHero.friends}
               />
-            </HeroDetailWrapper>
+            </Grid>
           )
         }
-      </Wrapper>
+      </Grid>
     );
   }
 }

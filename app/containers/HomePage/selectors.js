@@ -7,7 +7,13 @@ const makeSelectUsername = () => createSelector(
   (homeState) => homeState.username
 );
 
+const makeSelectTown = () => createSelector(
+  selectHome,
+  (homeState) => homeState.town
+);
+
 export {
   selectHome,
   makeSelectUsername,
+  makeSelectTown
 };

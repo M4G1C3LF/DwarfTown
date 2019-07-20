@@ -11,7 +11,7 @@ import ReposList from 'components/ReposList';
 import './style.scss';
 import HeroDetail from 'components/HeroDetail';
 import HeroList from 'components/HeroList';
-import HeroListMock from 'components/HeroList/mock';
+// import HeroListMock from 'components/HeroList/mock';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 
@@ -40,7 +40,9 @@ export default class HomePage extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { username, onSubmitForm } = this.props;
+    const { username, onSubmitForm, onLoadPage } = this.props;
+
+    onLoadPage();
     if (username && username.trim().length > 0) {
       onSubmitForm();
     }
@@ -53,7 +55,7 @@ export default class HomePage extends React.PureComponent {
 
   render() {
     const {
-      loading, error, repos, username, onChangeUsername, onSubmitForm
+      loading, error, repos, username, onChangeUsername, onSubmitForm, town
     } = this.props;
     const reposListProps = {
       loading,
@@ -66,7 +68,9 @@ export default class HomePage extends React.PureComponent {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <HeroList heroes={HeroListMock.Brastlewark} onClickItem={this.selectHero} />
+          {town && town.length
+            && <HeroList heroes={town} onClickItem={this.selectHero} />
+          }
         </Grid>
         <Grid id='heroDetailWrapper' item xs={12} sm={6}>
           {selectedHero
@@ -97,5 +101,6 @@ HomePage.propTypes = {
   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
-  onChangeUsername: PropTypes.func
+  onChangeUsername: PropTypes.func,
+  onLoadPage: PropTypes.func,
 };

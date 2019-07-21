@@ -14,7 +14,7 @@ import HeroList from 'components/HeroList';
 // import HeroListMock from 'components/HeroList/mock';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
-import { filterByName } from 'utils/filteringTools' 
+import { filterByName, filterByProfession, getProfessions } from 'utils/filteringTools' 
 const Wrapper = styled.div`
   display: inline-flex;
 `;
@@ -37,7 +37,10 @@ export default class HomePage extends React.PureComponent {
 
   state = {
     selectedHero: null,
-    filter: '',
+    filter: {
+      name: '',
+      profession: '',
+    }
   }
 
   componentDidMount() {
@@ -65,16 +68,22 @@ export default class HomePage extends React.PureComponent {
       repos
     };
 
-    const { selectedHero, filter } = this.state;
-    
+    const { selectedHero, filter, professionFilter } = this.state;
+    console.log(JSON.stringify(getProfessions(town)))
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           {town && town.length
             && (
               <div>
-                <span>Filter: <input value={filter} onChange={(e) => this.setState({ filter: e.target.value })} /> </span>
-                <HeroList heroes={filterByName(town, filter)} onClickItem={this.selectHero} />
+                <span>Name: <input value={filter.name} onChange={(e) => this.setState({ filter: { ...filter, name: e.target.value } })} /> </span><br />
+                <span>
+                  Professions: 
+                  <select onChange={(e) => this.setState({ filter: { ...filter, profession: e.target.value }}) }>
+                    {getProfessions(town).map((job) => <option key={`Profession_${job}`} value={job}>{job}</option>)}
+                  </select>
+                </span>
+                <HeroList heroes={filterByProfession(filterByName(town, filter.name), filter.profession )} onClickItem={this.selectHero} />
               </div>
             )
           }

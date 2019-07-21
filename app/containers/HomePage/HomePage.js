@@ -86,6 +86,6 @@ export default class HomePage extends React.PureComponent {
 }
 
 HomePage.propTypes = {
-  town: PropTypes.object,
+  town: PropTypes.array,
   onLoadPage: PropTypes.func,
 };

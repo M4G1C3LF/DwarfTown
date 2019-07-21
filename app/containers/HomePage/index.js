@@ -8,10 +8,8 @@ import {
   makeSelectLoading,
   makeSelectError
 } from 'containers/App/selectors';
-import { loadRepos } from '../App/actions';
 import { loadTown } from './actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername,makeSelectTown } from './selectors';
+import { makeSelectUsername, makeSelectTown } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import HomePage from './HomePage';

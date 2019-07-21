@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import HeroDetail from '../index';
 
-describe('<ListItem />', () => {
+describe('<HeroDetail />', () => {
   it('should render an error', () => {
     const renderedComponent = mount(<HeroDetail />);
     const content = <div><p>Error loading hero detail</p></div>;

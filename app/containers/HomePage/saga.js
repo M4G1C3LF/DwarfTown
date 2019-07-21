@@ -10,11 +10,11 @@ import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 import request from 'utils/request';
 import { makeSelectUsername } from 'containers/HomePage/selectors';
 import { townLoaded, townLoadingError } from './actions';
-import { LOAD_TOWN } from './constants'
+import { LOAD_TOWN } from './constants';
 
 export function* getTown() {
   // Select username from store
-  const requestURL = `https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json`;
+  const requestURL = 'https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json';
 
   try {
     // Call our request helper (see 'utils/request')

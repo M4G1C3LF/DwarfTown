@@ -32,7 +32,7 @@ export default function configureStore(initialState = {}, history) {
   const store = createStore(createReducer(), initialState, composeEnhancers(...enhancers));
 
   // Extensions
-  sagaMiddleware.run(watchGetTown)
+  sagaMiddleware.run(watchGetTown);
   store.runSaga = sagaMiddleware.run;
   store.injectedReducers = {}; // Reducer registry
   store.injectedSagas = {}; // Saga registry

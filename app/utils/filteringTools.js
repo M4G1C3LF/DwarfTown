@@ -13,7 +13,7 @@ export function filterByProfession(characters, professionFilter) {
 
 export function getProfessions(characters) {
   const jobs = [];
-
+  jobs.push('');
   if (characters && characters.length) {
     characters.map((char) => {
       if (char.professions && char.professions.length) {

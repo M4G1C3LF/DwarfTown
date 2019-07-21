@@ -49,7 +49,7 @@ const Image = styled.img`
 const HeroDetail = ({
   id, name, thumbnail, age, weight, height, hairColor, professions, friends
 }) => (
-  <DragScroll height={"80vh"} width={"100%"}>
+  <DragScroll height={"60vh"} width={"100%"}>
     <Wrapper>
       {(id || id === 0) && name && age && weight && height && hairColor ? (
         <div id={`heroDetail_${id}`}>

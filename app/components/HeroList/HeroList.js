@@ -7,7 +7,8 @@ import DragScroll from 'react-dragscroll';
 const StyledUl = styled.ul`
   list-style-type: none;
   padding-left: 0px;
-`
+`;
+
 const StyledLi = styled.li`
   background: ${props => props.isPair ? '#FFFFFF' : '#A9A9A9' };
 `;
@@ -25,7 +26,7 @@ const Wrapper = styled.div`
 `;
 
 const HeroList = ({ heroes, onClickItem }) => (
-  <DragScroll height={"80vh"} width={"100%"}>
+  <DragScroll height={"60vh"} width={"100%"}>
     <Wrapper id="HeroList">
       {heroes && heroes.length ? (
         <StyledUl>

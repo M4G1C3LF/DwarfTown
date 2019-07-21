@@ -53,17 +53,17 @@ export default class HomePage extends React.PureComponent {
               <div>
                 <span>Name: <input value={filter.name} onChange={(e) => this.setState({ filter: { ...filter, name: e.target.value } })} /> </span><br />
                 <span>
-                  Professions: 
-                  <select onChange={(e) => this.setState({ filter: { ...filter, profession: e.target.value }}) }>
+                  Professions:
+                  <select onChange={(e) => this.setState({ filter: { ...filter, profession: e.target.value } })}>
                     {getProfessions(town).map((job) => <option key={`Profession_${job}`} value={job}>{job}</option>)}
                   </select>
                 </span>
-                <HeroList heroes={filterByProfession(filterByName(town, filter.name), filter.profession )} onClickItem={this.selectHero} />
+                <HeroList heroes={filterByProfession(filterByName(town, filter.name), filter.profession)} onClickItem={this.selectHero} />
               </div>
             )
           }
         </Grid>
-        <Grid id='heroDetailWrapper' item xs={12} sm={6}>
+        <Grid id="heroDetailWrapper" item xs={12} sm={6}>
           {selectedHero
             && (
               <HeroDetail
@@ -77,7 +77,6 @@ export default class HomePage extends React.PureComponent {
                 professions={selectedHero.professions}
                 friends={selectedHero.friends}
               />
-              
             )
           }
         </Grid>

@@ -1,11 +1,11 @@
 
-<div>Brastlewark Town!!</div>
+<h1>Brastlewark Town</h1>
 
 ## Quick start
 1. Clone this repo using `git clone https://github.com/M4G1C3LF/DwarfTown`
 2. Move to the appropriate directory: `cd dwarfTown`.<br />
 3. Run `yarn` or `npm install` to install dependencies.<br />
-4. Run `yarn start` or `npm start` to see the example app at `http://localhost:3000`.
+4. Run `yarn start` or `npm start` to run the app at `http://localhost:3000`.
 5. To run tests run `yarn test` or `npm test`
 
 

@@ -1,5 +1,9 @@
-import { CHANGE_USERNAME, LOAD_TOWN, LOAD_TOWN_SUCCESS, LOAD_TOWN_ERROR } from './constants';
-import { getTown } from './saga'
+import {
+  CHANGE_USERNAME,
+  LOAD_TOWN,
+  LOAD_TOWN_SUCCESS,
+  LOAD_TOWN_ERROR
+} from './constants';
 
 // The initial state of the App
 const initialState = {
@@ -16,12 +20,11 @@ function homeReducer(state = initialState, action) {
         ...state,
         loading: true,
         error: false,
-        town: {},
+        town: [],
       };
       return newState;
     }
     case LOAD_TOWN_SUCCESS: {
-
       const newState = {
         ...state,
         loading: false,

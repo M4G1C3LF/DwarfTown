@@ -15,7 +15,13 @@
  *    }
  */
 
-import { CHANGE_USERNAME, LOAD_TOWN, LOAD_TOWN_SUCCESS, LOAD_TOWN_ERROR } from './constants';
+import {
+  CHANGE_USERNAME,
+  LOAD_TOWN,
+  LOAD_TOWN_SUCCESS,
+  LOAD_TOWN_ERROR
+} from './constants';
+
 /**
  * Changes the input field of the form
  *

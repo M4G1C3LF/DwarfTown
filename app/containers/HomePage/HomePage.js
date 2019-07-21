@@ -68,7 +68,7 @@ export default class HomePage extends React.PureComponent {
       repos
     };
 
-    const { selectedHero, filter, professionFilter } = this.state;
+    const { selectedHero, filter } = this.state;
     console.log(JSON.stringify(getProfessions(town)))
     return (
       <Grid container spacing={3}>

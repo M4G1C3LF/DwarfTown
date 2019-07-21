@@ -10,3 +10,6 @@
  */
 
 export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
+export const LOAD_TOWN = 'boilerplate/Home/LOAD_TOWN';
+export const LOAD_TOWN_SUCCESS = 'boilerplate/Home/LOAD_TOWN_SUCCESS';
+export const LOAD_TOWN_ERROR = 'boilerplate/Home/LOAD_TOWN_ERROR';

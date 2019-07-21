@@ -1,28 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
+import styled from 'styled-components';
+import DragScroll from 'react-dragscroll';
 
-const HeroListItem = ({ hero, onClickItem }) => <li onClick={ () => onClickItem(hero) }>{hero.name}</li>;
+const StyledLi = styled.li`
+  background: ${(props) => { if (props.isPair) return '#FFFFFF'; return '#A9A9A9'; }};
+`;
+
+const StyledUl = styled.ul`
+  list-style-type: none;
+  padding-left: 0px;
+`;
+
+const HeroListItem = ({ hero, isPair, onClickItem }) => <StyledLi isPair={isPair} onClick={() => onClickItem(hero)}>{hero.name}</StyledLi>;
 
 HeroListItem.propTypes = {
   hero: PropTypes.object,
+  isPair: PropTypes.bool,
   onClickItem: PropTypes.func,
 };
 
+const Wrapper = styled.div`
+  width: 100%;
+`;
+
 const HeroList = ({ heroes, onClickItem }) => (
-  <div id="HeroList">
-    {heroes && heroes.length ? (
-      <ul>
-        {heroes.map((hero) => <HeroListItem key={`HeroListItem_${hero.id}`} hero={hero} onClickItem={onClickItem}/>)}
-      </ul>
-    ) : (
-      <div>
-        <p>Error loading hero list</p>
-        <h3>heroes</h3>
-        <p>--- {JSON.stringify(heroes)} ---</p>
-      </div>
-    )}
-  </div>
+  <DragScroll height={'60vh'} width={'100%'}>
+    <Wrapper id="HeroList">
+      {heroes && heroes.length ? (
+        <StyledUl>
+          {heroes.map((hero, index) => <HeroListItem key={`HeroListItem_${hero.id}`} isPair={(index % 2 === 0)} hero={hero} onClickItem={onClickItem} />)}
+        </StyledUl>
+      ) : (
+        <div>
+          <p>Error loading hero list</p>
+        </div>
+      )}
+    </Wrapper>
+  </DragScroll>
 );
 
 HeroList.propTypes = {

@@ -6,14 +6,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import ReposList from 'components/ReposList';
 import './style.scss';
 import HeroDetail from 'components/HeroDetail';
 import HeroList from 'components/HeroList';
-import HeroListMock from 'components/HeroList/mock';
+// import HeroListMock from 'components/HeroList/mock';
+import Grid from '@material-ui/core/Grid';
+import { filterByName, filterByProfession, getProfessions } from 'utils/filteringTools';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class HomePage extends React.PureComponent {
   constructor(props) {
     super(props);
     this.selectHero = this.selectHero.bind(this);
@@ -24,60 +24,68 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
    */
 
   state = {
-    selectedHero: null
+    selectedHero: null,
+    filter: {
+      name: '',
+      profession: '',
+    }
   }
 
   componentDidMount() {
-    const { username, onSubmitForm } = this.props;
-    if (username && username.trim().length > 0) {
-      onSubmitForm();
-    }
+    const { onLoadPage } = this.props;
+    onLoadPage();
   }
 
   selectHero(hero) {
     this.setState({ selectedHero: hero });
+    document.getElementById('heroDetailWrapper').scrollIntoView();
   }
 
   render() {
-    const {
-      loading, error, repos, username, onChangeUsername, onSubmitForm
-    } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos
-    };
+    const { town } = this.props;
 
-    const { selectedHero } = this.state;
-
+    const { selectedHero, filter } = this.state;
     return (
-      <div>
-        <HeroList heroes={HeroListMock.Brastlewark} onClickItem={this.selectHero} />
-        {selectedHero
-          && (
-            <HeroDetail
-              id={selectedHero.id}
-              name={selectedHero.name}
-              thumbnail={selectedHero.thumbnail}
-              age={selectedHero.age}
-              weight={selectedHero.weight}
-              height={selectedHero.height}
-              hairColor={selectedHero.hair_color}
-              professions={selectedHero.professions}
-              friends={selectedHero.friends}
-            />
-          )
-        }
-      </div>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          {town && town.length
+            && (
+              <div>
+                <span>Name: <input value={filter.name} onChange={(e) => this.setState({ filter: { ...filter, name: e.target.value } })} /> </span><br />
+                <span>
+                  Professions:
+                  <select onChange={(e) => this.setState({ filter: { ...filter, profession: e.target.value } })}>
+                    {getProfessions(town).map((job) => <option key={`Profession_${job}`} value={job}>{job}</option>)}
+                  </select>
+                </span>
+                <HeroList heroes={filterByProfession(filterByName(town, filter.name), filter.profession)} onClickItem={this.selectHero} />
+              </div>
+            )
+          }
+        </Grid>
+        <Grid id="heroDetailWrapper" item xs={12} sm={6}>
+          {selectedHero
+            && (
+              <HeroDetail
+                id={selectedHero.id}
+                name={selectedHero.name}
+                thumbnail={selectedHero.thumbnail}
+                age={selectedHero.age}
+                weight={selectedHero.weight}
+                height={selectedHero.height}
+                hairColor={selectedHero.hair_color}
+                professions={selectedHero.professions}
+                friends={selectedHero.friends}
+              />
+            )
+          }
+        </Grid>
+      </Grid>
     );
   }
 }
 
 HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func
+  town: PropTypes.array,
+  onLoadPage: PropTypes.func,
 };

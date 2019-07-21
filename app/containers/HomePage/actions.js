@@ -15,7 +15,12 @@
  *    }
  */
 
-import { CHANGE_USERNAME } from './constants';
+import {
+  CHANGE_USERNAME,
+  LOAD_TOWN,
+  LOAD_TOWN_SUCCESS,
+  LOAD_TOWN_ERROR
+} from './constants';
 
 /**
  * Changes the input field of the form
@@ -28,5 +33,25 @@ export function changeUsername(name) {
   return {
     type: CHANGE_USERNAME,
     name
+  };
+}
+
+export function loadTown() {
+  return {
+    type: LOAD_TOWN,
+  };
+}
+
+export function townLoaded(town) {
+  return {
+    type: LOAD_TOWN_SUCCESS,
+    town
+  };
+}
+
+export function townLoadingError(error) {
+  return {
+    type: LOAD_TOWN_ERROR,
+    error,
   };
 }

@@ -4,8 +4,6 @@ export function filterByName(characters, filterString) {
 }
 
 export function filterByProfession(characters, professionFilter) {
-  console.log("FilterByProfession")
-  console.log(JSON.stringify(characters));
   if (!professionFilter) return characters;
   const result = characters && characters.length ? characters.filter((character) => character.professions.includes(professionFilter)) : null;
   return result;

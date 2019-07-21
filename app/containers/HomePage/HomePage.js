@@ -69,7 +69,6 @@ export default class HomePage extends React.PureComponent {
     };
 
     const { selectedHero, filter } = this.state;
-    console.log(JSON.stringify(getProfessions(town)))
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>

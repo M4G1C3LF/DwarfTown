@@ -39,15 +39,23 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 400px;
-  max-height: 400px;
-  border: '5px solid red';
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
   margin-left: auto;
   margin-right: auto;
 `;
 
 const HeroDetail = ({
-  id, name, thumbnail, age, weight, height, hairColor, professions, friends
+  id,
+  name,
+  thumbnail,
+  age,
+  weight,
+  height,
+  hairColor,
+  professions,
+  friends,
 }) => (
   <DragScroll height={'60vh'} width={'100%'}>
     <Wrapper>
